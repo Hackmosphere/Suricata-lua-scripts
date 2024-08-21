@@ -1,0 +1,3 @@
+# Alert when there is a portscan
+alert tcp any any -> any any (msg:"Port Scan Detected (Custom.lua) : Over 9 different ports in 120 sec."; priority:2; flow:to_server; threshold: type limit, track by_src, seconds 1200, count 1; lua:Custom.lua; sid:1000001; rev:1;)
+
